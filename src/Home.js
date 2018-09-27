@@ -9,8 +9,10 @@ import {
 const SearchBox = connectSearchBox(({ currentRefinement, refine }) => (
   <TextInput
     onChangeText={refine}
+    placeholder="iPhone XS MAX"
     value={currentRefinement}
     style={{
+      flex: 1,
       backgroundColor: 'white',
       height: 50,
       padding: 10,
@@ -52,10 +54,13 @@ const Hits = connectHits(({ hits }) => (
 ));
 
 class Home extends React.Component {
+  static navigationOptions = {
+    headerTitle: <SearchBox />,
+  };
+
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <SearchBox />
         <Hits />
       </View>
     );
